@@ -1,0 +1,11 @@
+{
+  "name": "sf-movies",
+  "version": "1.0.0",
+  "description": "SF Movies App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julian Aiup",
+  "license": "ISC"
+}
