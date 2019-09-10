@@ -13,5 +13,5 @@ node_modules/
 .env
 .env.test
 
-# build directory
-build/
+# js bundle
+public/bundle.js
