@@ -17,8 +17,9 @@ app.get('/', (req, res) => {
 });
 
 // API
-app.get('/api', (req, res) => {
-  req.app.locals.collection.find({}).toArray().then(result => {
+app.get('/api/movie', (req, res) => {
+  const { title } = req.query;
+  req.app.locals.collection.find({ title }).toArray().then(result => {
     res.send(result);
   }).catch(error => {
     console.log(error);
