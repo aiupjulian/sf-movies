@@ -9,11 +9,11 @@ const dbName = 'sfmovies';
 const dbCollection = 'moviesLocations';
 const client = new MongoClient(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.use(express.static('./app'));
+app.use(express.static('./public'));
 
 // client code
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 // API
