@@ -1,5 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
   input: 'app/index.js',
@@ -10,6 +11,9 @@ export default {
   },
   plugins: [
     resolve(),
-    commonjs()
+    commonjs(),
+    postcss({
+      plugins: []
+    })
   ]
 };

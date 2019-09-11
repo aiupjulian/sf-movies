@@ -21,7 +21,7 @@ map.on('load', function() {
             type: 'Feature',
             properties: {
               description: '<strong>Nombre ubicacion</strong><p>Fun fact</p>',
-              icon: 'theatre'
+              icon: 'cinema'
             },
             geometry: {
               type: 'Point',

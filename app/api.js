@@ -1,5 +1,1 @@
-fetch('/api').then(response => {
-  return response.json();
-}).then(data => {
-  console.log(data);
-});
+export const getMovieLocations = (movieTitle) => fetch(`/api/movie?title=${movieTitle}`).then(response => response.json());
