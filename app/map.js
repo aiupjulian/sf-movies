@@ -1,11 +1,47 @@
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+const mapboxSdk = require('@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js');
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWl1cGp1bGlhbiIsImEiOiJjazBlNTZjb3UwMDcyM2hvN2FyYnprN2oxIn0._WDJd5MgVTsJnImGLI8IDQ';
-var map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11',
   center: [-122.431297, 37.773972],
   zoom: 9.5
+});
+const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+
+document.getElementById('map').addEventListener('changeMovieLocations', e => {
+  const movieLocations = e.detail;
+  const movieLocationsLatLon = movieLocations.map(movieLocation => {
+    return mapboxClient.geocoding.forwardGeocode({
+      query: `${movieLocation.locations}, San Francisco`,
+      autocomplete: false,
+      limit: 1
+    }).send();
+  });
+  Promise.all(movieLocationsLatLon).then(function (responses) {
+    const features = [];
+    responses.forEach((response, index) => {
+      if (response && response.body && response.body.features && response.body.features.length) {
+        const feature = response.body.features[0];
+        features.push({
+          type: 'Feature',
+          properties: {
+            description: `<strong>${movieLocations[index].locations}</strong><p>Fun facts: ${movieLocations[index].fun_facts || '-'}</p>`,
+            icon: 'cinema'
+          },
+          geometry: {
+            type: 'Point',
+            coordinates: feature.center
+          }
+        });
+      }
+    });
+    map.getSource('places').setData({
+      type: 'FeatureCollection',
+      features,
+    });
+  });
 });
 
 map.on('load', function() {
@@ -16,19 +52,7 @@ map.on('load', function() {
       type: 'geojson',
       data: {
         type: 'FeatureCollection',
-        features: [
-          {
-            type: 'Feature',
-            properties: {
-              description: '<strong>Nombre ubicacion</strong><p>Fun fact</p>',
-              icon: 'cinema'
-            },
-            geometry: {
-              type: 'Point',
-              coordinates: [-122.431297, 37.773972]
-            }
-          }
-        ]
+        features: []
       }
     },
     layout: {
