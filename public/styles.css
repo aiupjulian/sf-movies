@@ -13,5 +13,6 @@ html, body {
 }
 #map {
   height: 60%;
+  min-height: 500px;
   width: 50%;
 }

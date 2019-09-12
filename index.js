@@ -26,6 +26,19 @@ app.get('/api/movie', (req, res) => {
   });
 });
 
+app.get('/api/autocomplete', (req, res) => {
+  const { search } = req.query;
+  req.app.locals.collection.aggregate([
+    { $group: { _id: '$title' } },
+    { $match: { _id: { $regex: `.*${search}.*`, $options: 'i' } } },
+    { $limit: 5 }
+  ]).toArray().then(movies => {
+    res.send(movies.map(movie => movie._id));
+  }).catch(error => {
+    console.log(error);
+  });
+});
+
 // if we can't connect to the db, don't start the server
 client.connect().then(() => {
   const db = client.db(dbName);
