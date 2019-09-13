@@ -20,5 +20,11 @@ input.addEventListener('input', debounce(async () => {
 input.addEventListener('awesomplete-selectcomplete', async (e) => {
   const moviesLocations = await getMovieLocations(e.text.value);
   const event = new CustomEvent('changeMovieLocations', { detail: moviesLocations });
-  document.getElementById('map').dispatchEvent(event);
-})
+	document.getElementById('map').dispatchEvent(event);
+	const selectedMovieTitle = document.createTextNode(e.text.value);
+	const selectedMovie = document.getElementById('selected-movie');
+	if (selectedMovie.firstChild) {
+		selectedMovie.removeChild(selectedMovie.firstChild);
+	}
+	selectedMovie.appendChild(selectedMovieTitle);
+});

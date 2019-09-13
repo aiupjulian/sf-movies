@@ -64,7 +64,14 @@ input:focus {
   min-height: 500px;
   width: 50%;
 }
-
+#selected-movie {
+  text-transform: uppercase;
+  margin: 0 0 5px;
+  height: 1.4rem;
+  font-size: 1.4rem;
+  font-family: 'Poiret One', cursive;
+  color: #cbb4ff;
+}
 @media only screen and (max-width: 1000px) {
   .fun-instruction {
     flex-direction: column;
