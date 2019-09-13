@@ -29,8 +29,8 @@ app.get('/api/movie', (req, res) => {
 app.get('/api/autocomplete', (req, res) => {
   const { search } = req.query;
   req.app.locals.collection.aggregate([
+    { $match: { title: { $regex: `.*${search}.*`, $options: 'i' }, locations: { $exists: "true" } } },
     { $group: { _id: '$title' } },
-    { $match: { _id: { $regex: `.*${search}.*`, $options: 'i' } } },
     { $limit: 5 }
   ]).toArray().then(movies => {
     res.send(movies.map(movie => movie._id));

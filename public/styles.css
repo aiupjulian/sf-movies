@@ -1,18 +1,78 @@
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
+  background-color: #151a27;
+  font-family: 'Roboto', sans-serif;
 }
 .content {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
+h1 {
+  font-family: 'Poiret One', cursive;
+  text-align: center;
+  text-transform: uppercase;
+  color: #cbb4ff;
+  border-bottom: 1px solid #cbb4ff;
+  width: 100%;
+  padding-bottom: 30px;
+  margin-top: 30px;
+}
+.awesomplete {
+  width: 40%;
+}
+input {
+  margin: 15px 0;
+  padding: 15px 10px;
+  width: 100%;
+  outline: none;
+  border: 2px solid #bbb;
+  border-radius: 20px;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -ms-transition: 0.2s ease all;
+  -o-transition: 0.2s ease all;
+  transition: 0.2s ease all;
+}
+input:focus {
+	border-color: #cbb4ff;
+}
+.info-text {
+  color: #fff;
+  font-size: 1.2rem;
+}
+.fun-instruction {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+.happy-icon {
+  height: 2rem;
+  margin-right: 10px;
+}
 #map {
+  margin-bottom: 20px;
+  border-radius: 5px;
   height: 60%;
   min-height: 500px;
   width: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .fun-instruction {
+    flex-direction: column;
+  }
+  p {
+    text-align: center;
+  }
+  .awesomplete, #map {
+    width: 90%;
+  }
 }

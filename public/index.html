@@ -4,16 +4,19 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>SF Movies Locations</title>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One|Roboto&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet" />
     <script src="bundle.js" defer async></script>
   </head>
   <body>
     <div class="content">
-      <input id="autocomplete-input" />
-      <button id="autocomplete-button" type="button" disabled>
-        Search movie
-      </button>
-      <p>Click on a location to see fun facts about it!</p>
+      <h1>San Francisco Movies</h1>
+        <p class="info-text">Enter a movie title to see the locations where it was filmed</p>
+        <input id="autocomplete-input" placeholder="Movie title..." />
+      <div class="fun-instruction">
+        <img class="happy-icon" src="happy.svg" /><p class="info-text">Click on a location to see fun facts about it!</p>
+      </div>
+      <p id="selected-movie"></p>
       <div id="map"></div>
     </div>
   </body>
