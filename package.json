@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build:client": "rollup -c",
+    "build": "rollup -c",
     "dev": "run-p watch:client watch:server",
     "watch:client": "rollup -c -w",
     "watch:server": "node-dev index.js",
