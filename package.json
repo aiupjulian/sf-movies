@@ -4,8 +4,7 @@
   "description": "SF Movies App",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:client && npm run start:server",
-    "start:server": "node index.js",
+    "start": "node index.js",
     "build:client": "rollup -c",
     "dev": "run-p watch:client watch:server",
     "watch:client": "rollup -c -w",
